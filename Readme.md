@@ -14,9 +14,9 @@ these 3 tables via MySQL.  A previous ID is required in the members_id table in 
 associate billing and shipping addresses properly.
 
 
-================================================================================
-SETUP:
 
+SETUP:
+================================================================================
 For the script to work as-is using the below previous customer data needs to be loaded
 into 3 DB Tables.  This can be reworked obviously to simply read data directly from CSV
 files but for easier querying of existing data, 3 tables are needed.
@@ -25,32 +25,31 @@ Field data can be found in each LOAD DATA SQL Query below for each table, data c
 however the member_id is the legacy customer ID used to associate customers with address
 data.
 
-TRUNCATE TABLE `<database>`.`members_import`;
-TRUNCATE TABLE `<database>`.`members_billing_import`;
-TRUNCATE TABLE `<database>`.`members_shipping_import`;
+    TRUNCATE TABLE `<database>`.`members_import`;
+    TRUNCATE TABLE `<database>`.`members_billing_import`;
+    TRUNCATE TABLE `<database>`.`members_shipping_import`;
 
-mysql -h <ip_here> -u <username> -p -e "LOAD DATA LOCAL INFILE '/full/local/path/members.csv' \
-IGNORE INTO TABLE `<database>`.`members_import` CHARACTER SET utf8 FIELDS TERMINATED BY ',' \
-OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES \
-(`member_id`, `invitation_code`, `email`, `password`, `key`, `role`, `join_date`, `first_name`, \
-`last_name`, `zipcode`, `country_iso`, `gender`, `birthday`, `last_visit`, `soft_login`, `fraud_flag`, \
-`recurring_order_exempt`, `fetchback`, `sid`, `mid`, `cid`, `aid`, `username`, `inv_camp_id`, \
-`pub_site_id`, `tid`, `member_status`, `optin`, `optin_modified`, `esp`, `notes`);" <database>
+    mysql -h <ip_here> -u <username> -p -e "LOAD DATA LOCAL INFILE '/full/local/path/members.csv' \
+    IGNORE INTO TABLE `<database>`.`members_import` CHARACTER SET utf8 FIELDS TERMINATED BY ',' \
+    OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES \
+    (`member_id`, `invitation_code`, `email`, `password`, `key`, `role`, `join_date`, `first_name`, \
+    `last_name`, `zipcode`, `country_iso`, `gender`, `birthday`, `last_visit`, `soft_login`, `fraud_flag`, \
+    `recurring_order_exempt`, `fetchback`, `sid`, `mid`, `cid`, `aid`, `username`, `inv_camp_id`, \
+    `pub_site_id`, `tid`, `member_status`, `optin`, `optin_modified`, `esp`, `notes`);" <database>
 
-LOAD DATA LOCAL INFILE 'billing_full.csv' IGNORE INTO TABLE `<database>`.`members_billing_import` \
-CHARACTER SET utf8 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' \
-IGNORE 1 LINES (`billing_id`, `member_id`, `first_name`, `last_name`, `address`, `address2`, `city`, \
-`state`, `zipcode`, `country_iso`, `create_date`, `label`, `phone`, `active`, `card_number_mcrypt`, \
-`card_number`, `card_type`, `email`, `update_time`, `card_exp_year`, `card_exp_month`, `keep`, \
-`paypal_ba_id`, `payment_method`, `verified`, `main`);
+    LOAD DATA LOCAL INFILE 'billing_full.csv' IGNORE INTO TABLE `<database>`.`members_billing_import` \
+    CHARACTER SET utf8 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' \
+    IGNORE 1 LINES (`billing_id`, `member_id`, `first_name`, `last_name`, `address`, `address2`, `city`, \
+    `state`, `zipcode`, `country_iso`, `create_date`, `label`, `phone`, `active`, `card_number_mcrypt`, \
+    `card_number`, `card_type`, `email`, `update_time`, `card_exp_year`, `card_exp_month`, `keep`, \
+    `paypal_ba_id`, `payment_method`, `verified`, `main`);
 
-LOAD DATA LOCAL INFILE 'shipping_full.csv' IGNORE INTO TABLE `<database>`.`members_shipping_import` \
-CHARACTER SET utf8 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' \
-IGNORE 1 LINES (`shipping_id`, `member_id`, `first_name`, `last_name`, `company`, `address`, \
-`address2`, `city`, `state`, `zipcode`, `country_iso`, `create_date`, `label`, `phone`, `active`, \
-`email`, `update_time`);
-SHOW WARNINGS;
-
+    LOAD DATA LOCAL INFILE 'shipping_full.csv' IGNORE INTO TABLE `<database>`.`members_shipping_import` \
+    CHARACTER SET utf8 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\r\n' \
+    IGNORE 1 LINES (`shipping_id`, `member_id`, `first_name`, `last_name`, `company`, `address`, \
+    `address2`, `city`, `state`, `zipcode`, `country_iso`, `create_date`, `label`, `phone`, `active`, \
+    `email`, `update_time`);
+    SHOW WARNINGS;
 
 USAGE:
 ================================================================================
