@@ -10,7 +10,7 @@ members_billing_import
 
 3 DB Tables are created and must be filled with pre-existing customer data that
 will be used during import. LOAD DATA INFILE is the easiest way to import this data into
-these 3 tables via MySQL.  A previous ID is required in the members_id table in order to
+these 3 tables via MySQL.  A previous ID is required in the ```members_id``` table in order to
 associate billing and shipping addresses properly.
 
 
@@ -22,7 +22,7 @@ into 3 DB Tables.  This can be reworked obviously to simply read data directly f
 files but for easier querying of existing data, 3 tables are needed.
 
 Field data can be found in each LOAD DATA SQL Query below for each table, data can vary
-however the member_id is the legacy customer ID used to associate customers with address
+however the ```member_id``` is the legacy customer ID used to associate customers with address
 data.
 
     TRUNCATE TABLE `<database>`.`members_import`;
@@ -54,7 +54,7 @@ data.
 USAGE:
 ================================================================================
 
-Usage:  php -f customerimport.php [number_of_records_per_thread] [total_records_to_import]
+Usage:  ```php -f customerimport.php [number_of_records_per_thread] [total_records_to_import]```
 
   number_of_records_per_thread  integer number of threads per (default 25000)
   total_records_to_import       integer number of total records to import (optional)
@@ -65,11 +65,11 @@ EXAMPLE:
 
 Import 100,000 records at 20,000 per thread
 
-    php -f shell/customerimport.php 20000 100000
+    ```php -f shell/customerimport.php 20000 100000```
 
-To monitor the activity during import, tail -f var/log/dataflowimport.log
+To monitor the activity during import, ```tail -f var/log/dataflowimport.log```
 
-Get total cores available: cat /proc/cpuinfo | grep processor | wc -l
+Get total cores available: ```cat /proc/cpuinfo | grep processor | wc -l```
 
 NOTES: Executing without any number of records or total records to import will use
 25000, with 600,000 records is 24 cores will be utilized during the process.
