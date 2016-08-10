@@ -1,6 +1,14 @@
 Customer Import with addresses with pseudo-multi-threading
 Written by: Jared Blalock (info@molotovbliss.com))
 
+USE AT YOUR OWN RISK, I am mainly providing this module as a means for others
+to realize how to leverage asynchronous batch processing via Magento and PHP
+to help speed up large volumes of data processing at once and to become unbound
+from single core processing on large (24+ core) systems. Providing faster 
+processing, which means less down time and happier clients/customers. This 
+module was original used in a production environment for Magento Enterprise
+version 1.13.x to import over a million customer records in under an hour.
+
 
 REQUIREMENTS:
 ================================================================================
