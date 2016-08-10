@@ -4,9 +4,9 @@ Written by: Jared Blalock (info@molotovbliss.com))
 
 REQUIREMENTS:
 ================================================================================
-members_import
-members_shipping_import
-members_billing_import
+1. members_import
+2. members_shipping_import
+3. members_billing_import
 
 3 DB Tables are created and must be filled with pre-existing customer data that
 will be used during import. LOAD DATA INFILE is the easiest way to import this data into
