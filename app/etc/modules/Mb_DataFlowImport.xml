@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mb_Dataflowimport>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mb_Dataflowimport>
+    </modules>
+</config>

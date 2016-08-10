@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Mb_Dataflowimport>
+            <version>0.1.0</version>
+        </Mb_Dataflowimport>
+    </modules>
+    <global>
+
+        <models>
+            <dataflowimport>
+                <class>Mb_Dataflowimport_Model</class>
+            </dataflowimport>
+            <customer>
+                <rewrite>
+                    <convert_adapter_customer>Mb_Dataflowimport_Model_Import</convert_adapter_customer>
+                </rewrite>
+            </customer>
+        </models>
+
+    </global>
+</config>
