@@ -65,7 +65,7 @@ EXAMPLE:
 
 Import 100,000 records at 20,000 per thread
 
-    ```php -f shell/customerimport.php 20000 100000```
+    php -f shell/customerimport.php 20000 100000
 
 To monitor the activity during import, ```tail -f var/log/dataflowimport.log```
 
